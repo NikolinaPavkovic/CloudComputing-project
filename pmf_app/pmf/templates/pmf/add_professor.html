@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>PMF: Prijavi studenta</title>
+  <title>FTN: Prijavi studenta</title>
   <link rel="stylesheet" type="text/css" href="{% static 'pmf/styles/form.css' %}">
 </head>
 
@@ -11,24 +11,27 @@
     <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
       <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-          <h1><a href="" rel="dofollow">Prirodno matematicki fakultet</a></h1>
+          <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Prirodno matematicki fakultet</a></h1>
         </div>
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Izaberite opciju:</span>
+              <span class="padding-bottom--15">Dodaj profesora</span>
               <form id="stripe-login">
                 <div class="field padding-bottom--24">
-                    <a href="{% url 'list-students' %}" style="font-size: x-large;">PRIKAZI STUDENTE</a>
+                    <label for="firstname">Ime</label>
+                    <input type="text" name="firstname">
                 </div>
                 <div class="field padding-bottom--24">
-                    <a href="{% url 'add-student' %}" style="font-size: x-large;">DODAJ STUDENTA</a>
+                    <label for="lastname">Prezime</label>
+                    <input type="text" name="lastname">
                 </div>
                 <div class="field padding-bottom--24">
-                    <a href="{% url 'list-professors' %}" style="font-size: x-large;">PRIKAZI PROFESORE</a>
+                  <label for="email">Email</label>
+                  <input type="email" name="email">
                 </div>
                 <div class="field padding-bottom--24">
-                    <a href="{% url 'add-professor' %}" style="font-size: x-large;">DODAJ PROFESORA</a>
+                  <input type="submit" name="add" value="Dodaj">
                 </div>
               </form>
             </div>
