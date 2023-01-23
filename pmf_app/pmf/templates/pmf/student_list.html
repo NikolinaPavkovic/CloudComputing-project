@@ -13,6 +13,7 @@
     <table class="fl-table">
         <thead>
         <tr>
+            <th>SLIKA</th>
             <th>BROJ INDEKSA</th>
             <th>IME</th>
             <th>PREZIME</th>
@@ -22,6 +23,11 @@
         <tbody>
         {% for student in students %}
         <tr>
+            <td>
+                {% if student.image %}
+                    <img src="{{student.image.url}}" style="width: 100px;">
+                {% endif %}
+            </td>
             <td>{{student.index}}</td>
             <td>{{student.firstname}}</td>
             <td>{{student.lastname}}</td>

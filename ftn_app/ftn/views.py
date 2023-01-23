@@ -1,8 +1,6 @@
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_protect
 from .models import Student, Professor
 from django.http import HttpResponse, JsonResponse
-import json
 
 import requests
 
@@ -53,16 +51,10 @@ def add_professor(request):
         else:
             form = RegisterProfessorForm(request.POST, request.FILES)
             if form.is_valid():
-                print("USLO")
                 professor_firstname = form.cleaned_data['firstname']
-                print("USLO")
                 professor_lastname = form.cleaned_data['lastname']
-                print("USLO")
                 professor_email = form.cleaned_data['email']
-                print("USLO")
                 professor_image = form.files['image']
-                print("USLO")
-                print(professor_image)
                 professor = Professor(None, professor_firstname, professor_lastname, professor_email)
                 professor_json = JsonResponse(ProfessorSerializer(professor).data)
                 response = requests.post('http://localhost:8080/uns-app/professor', headers={
