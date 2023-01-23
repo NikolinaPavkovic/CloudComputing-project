@@ -13,6 +13,7 @@
     <table class="fl-table">
         <thead>
         <tr>
+            <th>SLIKA</th>
             <th>IME</th>
             <th>PREZIME</th>
             <th>EMAIL</th>
@@ -21,6 +22,11 @@
         <tbody>
         {% for professor in professors %}
         <tr>
+            <td>
+                {% if professor.image %}
+                    <img src="{{professor.image.url}}" style="width: 100px;">
+                {% endif %}
+            </td>
             <td>{{professor.firstname}}</td>
             <td>{{professor.lastname}}</td>
             <td>{{professor.email}}</td>

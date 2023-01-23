@@ -51,11 +51,18 @@ def add_professor(request):
         if request.method == 'GET':
             form = RegisterProfessorForm()
         else:
-            form = RegisterProfessorForm(request.POST)
+            form = RegisterProfessorForm(request.POST, request.FILES)
             if form.is_valid():
+                print("USLO")
                 professor_firstname = form.cleaned_data['firstname']
+                print("USLO")
                 professor_lastname = form.cleaned_data['lastname']
+                print("USLO")
                 professor_email = form.cleaned_data['email']
+                print("USLO")
+                professor_image = form.files['image']
+                print("USLO")
+                print(professor_image)
                 professor = Professor(None, professor_firstname, professor_lastname, professor_email)
                 professor_json = JsonResponse(ProfessorSerializer(professor).data)
                 response = requests.post('http://localhost:8080/uns-app/professor', headers={
@@ -66,7 +73,7 @@ def add_professor(request):
                 if response.text != 'OK':
                     return HttpResponse('Professor already exists.')
                 else:
-                    professor = Professor.objects.create(firstname=professor_firstname, lastname=professor_lastname, email=professor_email)
+                    professor = Professor.objects.create(firstname=professor_firstname, lastname=professor_lastname, email=professor_email, image=professor_image)
                     professor.save()
                     return HttpResponse('Professor saved.')
     except Exception as exc:
