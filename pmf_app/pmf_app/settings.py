@@ -80,8 +80,8 @@ DATABASES = {
        'NAME': 'pmf-students',
        'USER': 'postgres',
        'PASSWORD': 'postgres',
-       'HOST': 'localhost',
-       'PORT': '5433',
+       'HOST': 'postgres-pmf',
+       'PORT': '5432',
    }
 }
 
