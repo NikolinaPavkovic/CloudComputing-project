@@ -81,8 +81,8 @@ DATABASES = {
        'NAME': 'ftn-students',
        'USER': 'postgres',
        'PASSWORD': 'postgres',
-       'HOST': 'localhost',
-       'PORT': '5433',
+       'HOST': 'postgres-ftn',
+       'PORT': '5432',
    }
 }
 
