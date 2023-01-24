@@ -27,7 +27,7 @@ def add_student(request):
                 student_image = form.files['image']
                 student = Student(None, student_index, student_firstname, student_lastname, student_email, student_image)
                 student_json = JsonResponse(StudentSerializer(student).data)
-                response = requests.post('http://localhost:8080/uns-app/student', headers={
+                response = requests.post('http://uns-app:8080/uns-app/student', headers={
                     'Content-Type': 'application/json',
                     'Accept-Encoding': 'gzip,deflate,br',
                     'Connection': 'keep-alive'
@@ -58,7 +58,7 @@ def add_professor(request):
                 professor_image = form.files['image']
                 professor = Professor(None, professor_firstname, professor_lastname, professor_email)
                 professor_json = JsonResponse(ProfessorSerializer(professor).data)
-                response = requests.post('http://localhost:8080/uns-app/professor', headers={
+                response = requests.post('http://uns-app:8080/uns-app/professor', headers={
                     'Content-Type': 'application/json',
                     'Accept-Encoding': 'gzip,deflate,br',
                     'Connection': 'keep-alive'

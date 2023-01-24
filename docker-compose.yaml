@@ -59,3 +59,25 @@ services:
       interval: 5s
       retries: 5
       timeout: 5s
+  
+  pravni-app:
+    build: ./pravni_app
+    ports:
+      - "8003:8081"
+    depends_on:
+      postgres-pravni:
+        condition: service_healthy
+
+  postgres-pravni:
+    image: postgres
+    ports:
+      - "5438:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=pravni-students
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      retries: 5
+      timeout: 5s
