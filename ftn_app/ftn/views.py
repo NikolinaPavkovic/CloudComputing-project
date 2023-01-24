@@ -26,7 +26,7 @@ def add_student(request):
                 student_image = form.files['image']
                 student = Student(None, student_index, student_firstname, student_lastname, student_email, student_image)
                 student_json = JsonResponse(StudentSerializer(student).data)
-                response = requests.post('http://nginx:8082/uns-app/student', headers={
+                response = requests.post('http://nginx:80/uns-app/student', headers={
                     'Content-Type': 'application/json',
                     'Accept-Encoding': 'gzip,deflate,br',
                     'Connection': 'keep-alive'
