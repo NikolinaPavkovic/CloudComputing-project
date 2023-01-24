@@ -27,3 +27,11 @@ jobs:
           context: ./uns-app
           push: true
           tags: nina150200/uns-app:latest
+          
+      - name: Build and push
+        id: docker_build2
+        uses: docker/build-push-action@v2
+        with:
+          context: ./ftn_app
+          push: true
+          tags: nina150200/ftn-app:latest
