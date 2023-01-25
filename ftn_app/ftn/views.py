@@ -42,7 +42,7 @@ def add_student(request):
 
     return render(request, 'ftn/add_student.html', {
         'form': form
-    })
+    })    
 
 def add_professor(request):
     try:
