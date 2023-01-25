@@ -1,9 +1,16 @@
 version: '3.1'
 services:
-  uns-app:
+  uns-app1:
     image: nina150200/uns-app:latest
     ports:
-      - "8080:8080"
+      - "8081:8080"
+    depends_on:
+      - postgres
+  
+  uns-app2:
+    image: nina150200/uns-app:latest
+    ports:
+      - "8082:8080"
     depends_on:
       - postgres
 
@@ -17,6 +24,16 @@ services:
       - POSTGRES_DB=uns-students
     volumes:
        - ./data-uns:/var/lib/postgresql/data
+  
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - uns-app1
+      - uns-app2
+    ports:
+      - "8888:80"
 
   ftn-app:
     image: nina150200/ftn-app:latest
