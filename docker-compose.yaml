@@ -1,14 +1,14 @@
 version: '3.1'
 services:
   uns-app1:
-    image: nina150200/uns-app:1.0
+    image: nina150200/uns-app:1.1
     ports:
       - "8081:8080"
     depends_on:
       - postgres
   
   uns-app2:
-    image: nina150200/uns-app:1.0
+    image: nina150200/uns-app:1.1
     ports:
       - "8082:8080"
     depends_on:
@@ -33,10 +33,10 @@ services:
       - uns-app1
       - uns-app2
     ports:
-      - "8888:80"
+      - "80:80"
 
   ftn-app:
-    image: nina150200/ftn-app:1.0
+    image: nina150200/ftn-app:1.1
     ports:
       - "8001:8081"
     volumes:
@@ -62,7 +62,7 @@ services:
       timeout: 5s
   
   pmf-app:
-    image: nina150200/pmf-app:1.0
+    image: nina150200/pmf-app:1.1
     ports:
       - "8002:8081"
     volumes:
@@ -88,7 +88,7 @@ services:
       timeout: 5s
   
   pravni-app:
-    image: nina150200/pravni-app:1.0
+    image: nina150200/pravni-app:1.1
     ports:
       - "8003:8081"
     volumes:
