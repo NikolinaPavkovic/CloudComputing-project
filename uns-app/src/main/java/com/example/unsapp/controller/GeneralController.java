@@ -6,6 +6,7 @@ import com.example.unsapp.model.Professor;
 import com.example.unsapp.model.Student;
 import com.example.unsapp.service.ProfessorService;
 import com.example.unsapp.service.StudentService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class GeneralController {
     private final StudentService studentService;
     private final ProfessorService professorService;
+    private int counter = 0;
 
     @PostMapping("/student")
-    public ResponseEntity<String> saveStudent(@RequestBody StudentDTO studentDTO){
+    public ResponseEntity<String> saveStudent(HttpServletRequest httpServletRequest, @RequestBody StudentDTO studentDTO){
+        counter++;
+        System.out.println("Broj pristupa kontejneru: " + counter);
         Student student = studentService.saveStudent(studentDTO);
         if (student == null)
             return new ResponseEntity<>("Student already exists.", HttpStatus.OK);
@@ -31,6 +35,8 @@ public class GeneralController {
 
     @PostMapping("/professor")
     public ResponseEntity<String> saveProfessor(@RequestBody ProfessorDTO professorDTO){
+        counter++;
+        System.out.println("Broj pristupa kontejneru: " + counter);
         Professor professor = professorService.saveProfessor(professorDTO);
         if (professor == null)
             return new ResponseEntity<>("Professor already exists.", HttpStatus.OK);
